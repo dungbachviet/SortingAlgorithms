@@ -636,7 +636,7 @@ Giải thuật sắp xếp theo cơ số 10 với tư tưởng chính sau:
 
 - Mặc dù giải thuật trên khá nhanh. Tuy nhiên vẫn chưa thể đánh bại giải thuật sắp xếp dựa trên so sánh (như QuickSort, HeapSort, Merge Sort) 
 
-9. Thuật toán Bucket Sort( Sắp xếp phân cụm)
+9.Thuật toán Bucket Sort( Sắp xếp phân cụm)
 
 9.1. Mã nguồn minh họa
 ```C++
@@ -843,6 +843,8 @@ Thuật toán xuất phát từ ý tưởng nhốt chim vào lồng áp dụng c
 12.4. Nhận xét và đánh giá
 
 - Yêu cầu của giải thuật Nhốt chim vào lồng : Số lượng các phần tử và miền giá trị của chúng phải khá gần nhau
+
+
 
 
 
