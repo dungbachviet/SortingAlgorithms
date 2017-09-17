@@ -636,6 +636,215 @@ Giải thuật sắp xếp theo cơ số 10 với tư tưởng chính sau:
 
 - Mặc dù giải thuật trên khá nhanh. Tuy nhiên vẫn chưa thể đánh bại giải thuật sắp xếp dựa trên so sánh (như QuickSort, HeapSort, Merge Sort) 
 
+9. Thuật toán Bucket Sort( Sắp xếp phân cụm)
+
+9.1. Mã nguồn minh họa
+```C++
+void bucketSort(double *unsortedArray, int size) {
+	vector<double> *buckets = new vector<double>[size];
+	
+	// put elements into proper buckets
+	int bucketIndex;
+	for (int index = 0; index < size; index++) {
+		bucketIndex = size * unsortedArray[index];
+		buckets[bucketIndex].push_back(unsortedArray[index]);
+	}
+
+	// using insertion algorithm to sort elements in each bucket ascendingly 
+	for (int bucketIndex = 0; bucketIndex < size; bucketIndex++) {
+		sort(buckets[bucketIndex].begin(), buckets[bucketIndex].end());
+	}
+
+	// Copy elements from buckets into the original array
+	int originalArrayIndex = 0;
+	int sizeOfEachBucket;
+	for (int bucketIndex = 0; bucketIndex < size; bucketIndex++) {
+		sizeOfEachBucket = buckets[bucketIndex].size();
+		for (int insideBucketIndex = 0; insideBucketIndex < sizeOfEachBucket; insideBucketIndex++) {
+			unsortedArray[originalArrayIndex] = buckets[bucketIndex][insideBucketIndex];
+			++originalArrayIndex;
+		}
+	}
+
+}
+```
+
+9.2. Ý tưởng của giải thuật
+
+Giải thuật phân cụm được áp dụng cho lớp bài toán sắp xếp phần tử mà các phần tử trong dãy có sự phân bố đều đặn trong miền giá trị của nó. Giải thuật này được trình bày cụ thể trong bài toán sắp xếp dãy số có miền giá trị từ 0 đến 1, và các phần tử có sự phân bố đều đặn trong miền đó
+
++ Tạo ra n vector hay mảng được gọi là bucket
++ Duyệt các phần tử trong mảng gốc, với mỗi phần tử ta sẽ đưa nó vào trong một bucket phù hợp (như thế nào là phù hợp? nghĩa là : phần tử có giá trị x sẽ được đưa vào buckets (cụm) có chỉ số là (int) x * n . Như vậy có thể trong một buket có thể chứa nhiều phần tử (tư tưởng của bảng băm)
++ Sử dụng ưu thế của giải thuật sắp xếp chèn cho một lượng nhỏ các phần tử. Ta tiến hành thực hiện giải thuật Insertion Sort trên từng cụm bucket. Quá trình này hoàn tất đồng nghĩa với việc tất cả các phần tử trong mỗi bucket đều đã được xếp thứ tự
++ Công việc đơn giản cuối cùng chỉ còn là : Duyệt từ bucket đầu tiên tới bucket cuối cùng để lấy các phần tử ra và ghi đè lần lượt vào mảng ban đầu. Kết quả : Mảng ban đầu đã được sắp xếp !
+
+9.3. Độ phức tạp của giải thuật 
+
+Trong thủ tục bucketSort, độ phức tạp của từng bước được thể hiện như sau : 
+
++ Bước đưa các phần tử vào các bucket phù hợp : O(n)
++ Sắp xếp các phần tử trên từng cụm buckets sử dụng Insertion Sort  : O(n) (trong trường hợp các phần tử trong dãy số phải được phân bố đều đặn )
+Như vậy độ phức tạp của bài toán : O(n)
+
+9.4. Nhận xét và đánh giá :
+
+- Giải thuật cho phép độ phức tạp thời gian sắp xếp dãy số theo thời gian tuyến tính trong trường hợp dãy số ban đầu phải được phân bố đều đặn trên miền giá trị của chúng
+
+10.Thuật toán Shell Sort (Tối ưu Insertion Sort)
+
+10.1 Mã nguồn minh họa 
+```C++
+void shellSort(double *unsortedArray, int size) {
+	int interval = 1;
+	int comparingIndex, currentIndex;
+	double comparingValue;
+
+	// Using Knuth's Formular to calculate the interval ( is initialized by 1)
+	while (interval <= (size / 3)) {
+		interval = interval * 3 + 1;
+	}
+
+	// 'Interval' specifies the distance in comparison. This algorithm's idea is similar to Insertion Algorithm, but with a specified distance for comparing
+	while (interval > 0) {
+		for (comparingIndex = interval; comparingIndex < size; comparingIndex++) {
+			comparingValue = unsortedArray[comparingIndex];
+			for (currentIndex = comparingIndex; currentIndex >= interval && unsortedArray[currentIndex - interval] > comparingValue; currentIndex -= interval) {
+				unsortedArray[currentIndex] = unsortedArray[currentIndex - interval];
+			}
+			unsortedArray[currentIndex] = comparingValue;
+		}
+		// reduce the comparing distance until it equals to zero 
+		interval = (interval - 1) / 3;
+	}
+}
+```
+
+10.2. Ý tưởng của giải thuật :
+
+Đây là một giải thuật giúp tối ưu hơn giải thuật Insertion Sort. Ý tưởng của giải thuật được thể hiện như sau : 
+
++ Bình thường trong giải thuật Insertion Sort (với một ví dụ : Người chơi bài), người chơi bài sẽ so sánh lần lượt quân bài hiện tại với các quân bài phía trước một cách kế tiếp. Một để xuất tối ưu được đưa ra đó là, thay vì cứ chăm chăm so sánh với các phần từ liền kề phía trước, họ nảy sinh một ý tưởng : Tại sao không tiến hành so sánh ngắt quãng (interval) (tức phần tử hiện tại được so sánh với các phần tử phía trước y hệt như Insertion sort nhưng khoảng cách giữa chúng phải là bội của interval (quãng)). Mọi thao tác trong giải thuật này cơ bản sẽ giống hệt với giải thuật Insertion Sort. Tuy nhiên có một điểm khác đặc biệt, đó là bước interval sẽ liên tục giảm sau mỗi lần lặp (quy tắc giảm được tuân theo một công thức đã được nghiên cứu chỉ rõ), vậy interval sẽ giảm tới khi nào? Nó sẽ giảm tới khi interval = 1 (tức quãng nhỏ nhất có thể), lúc này bài toán thuần túy trở về nguyên gốc giải thuật insertion sort (khi tới bước này dãy số hiện tại gần như đã được sắp xếp, hoặc thậm chí đã được sắp xếp rồi). Vì vậy, bước cuối cùng này chủ yếu mang tính kiểm nghiệm và rà soát một lần nữa, chứ ko làm tiêu tốn quá nhiều các thao tác hoán vị !!!
++ Chú ý : Ta cần phải khởi tạo giá trị interval theo công thức của Knuth nhằm đảm bảo thuật toán sẽ làm việc một cách hiệu quả (interval = interval * 3 + 1)
+
+10.3. Độ phức tạp của giải thuật 
+
+Dù đã có sự cải tiến tuy nhiên độ phức tạp của thuật toán trên vẫn cỡ O(n^2)
+
+10.4. Nhận xét và đánh giá 
+
+- Đây là giải thuật tối ưu hóa giải thuật Insertion Sort
+- Sử dụng công thức Knuth để tỉm ra interval phù hợp (interval = interval * 3 + 1)
+
+11.	 Thuật toán Comb Sort ( cải tiến giải thuật Bubble Sort)
+
+11.1. Mã nguồn minh họa :
+```C++
+void combSort(double *unsortedArray, int size) {
+	int startingPointOfGap = size; // means first point of sequences is compared
+	bool hasSwapped = true; // keep track of an array until it is sorted ascendingly (means have not any swapping in the array comparison process)
+	// when 2 conditions occur simultaneously : 
+	//not have any swapping ( means the arrays has been sorted successfully) 
+	// and startingPointOfGap == 1 (this condition can not ignore, when this variable equals to 1, it will waits hasSwapped variable until that variable equals to false to stop while loop)
+	while (startingPointOfGap != 1 || hasSwapped == true) {
+		startingPointOfGap = getNextGap(startingPointOfGap); // shrink gradually the gap
+		hasSwapped = false;
+		for (int comparingIndex = startingPointOfGap; comparingIndex < size; comparingIndex++) {
+			if (unsortedArray[comparingIndex] < unsortedArray[comparingIndex - startingPointOfGap]) {
+				swap(&unsortedArray[comparingIndex], &unsortedArray[comparingIndex - startingPointOfGap]);
+				hasSwapped = true;
+			}
+		}
+
+	}
+
+}
+
+int getNextGap(int gap) {
+	// The gap will be shinked by the following formular (based on practical experience)
+	gap = (gap * 10) / 13;
+	if (gap < 1)
+		return 1;
+	return gap;
+}
+
+// swap two values
+void swap(double *num1, double *num2) {
+	double intermediateValue = *num1;
+	*num1 = *num2;
+	*num2 = intermediateValue;
+}
+```
+11.2. Ý tưởng của giải thuật :  
+
+Giải thuật này là một sự cải tiến cho giải thuật Sắp xếp Nổi bọt (Bubble Sort). Tư tưởng chủ đạo của giải thuật này được thể hiện một cách cụ thể như sau :
+
++ Đối với giải thuật sắp xếp nổi bọt, quá trình so sánh và hoán vị được thực hiện trên các phần tử liền kề, liên tiếp. Sự sáng tạo trong phương pháp tối ưu của giải thuật này được thể hiện bằng việc sử dụng phương pháp so sánh ngắt quãng (như trong giải thuật Shell Sort), ta gọi các quãng này là gap. Ban đầu gap được khởi tạo bằng kích cỡ của mảng, trong quá trình lặp ta cần phải thu nhỏ, hay làm giảm giá trị của gap bằng một hệ số đã được kiểm định 1.3 (tức là cứ sau mỗi lần lặp, giá trị của gap sẽ giảm đi 1.3 lần). Các thao tác lúc này diễn ra cơ bản rất giống với Insertion Sort. Nó cứ tiếp diễn, cho tới khi gap = 1, lúc này giải thuật đã thực sự “quy chụp” về đúng giải thuật Insertion Sort với quãng so sánh = 1. 
++ Tuy nhiên, do việc giảm gap khá nhanh, nên tác giả giải thuật đã lồng ghép vào đó một biến hasSwapped. Biến này có ý nghĩa vô cùng quan trọng. Câu hỏi đặt ra là : Nó quan trọng như thế nào? Nếu không có nó liệu kết quả còn đúng đắn? Nhìn vào giải thuật trên, cụ thể điều kiện lặp trong vòng while, ta phát hiện thấy : Vòng while sẽ chỉ dừng khi và chỉ khi phải thỏa mãn đồng thời cả 2 điều kiện sau : quãng gap phải giảm về 1 đồng thời không còn bất kỳ sự hoán đồi nào trong lần duyệt trước. Điều này là hoàn toàn đúng đắn ( do tính hội tụ nhanh của gap, nên bắt buộc phải có một biến hasSwapped để kiểm soát tính “đã sắp xếp” của dãy số ban đầu)
+
+11.3. Độ phức tạp của giải thuật
+
+- Dù có một sự cải tiến đáng kể, nhưng độ phức tạp của giải thuật vẫn cỡ O(n^2)
+
+11.4 Nhận xét và đánh giá
+
+- Giải thuật là một sự cải tiến từ giải thuật Bubble Sort truyền thống với tư duy “so sánh theo quãng” khá hay
+- Hãy chú tới nhân tố giúp “hội tụ” hay co hẹp giá trị của gap (quãng) là : 1.3 (theo thực nghiệm)
+
+12. Thuật toán Pigeonhole Sort (Sắp xếp nhốt chim vào lồng)
+
+12.1. Mã nguồn minh họa 
+```C++
+void pigeonHoleSort(int *unsortedArray, int size) {
+	// Find the maximum and minimum in the original array
+	int maxValue = unsortedArray[0], minValue = unsortedArray[0];
+	for (int index = 0; index < size; index++) {
+		if (maxValue < unsortedArray[index]) 
+			maxValue = unsortedArray[index];		
+		if (minValue > unsortedArray[index]) 
+			minValue = unsortedArray[index];		
+	}
+
+	// Calculate the maximum range as following formular 
+	int range = maxValue - minValue + 1;
+	vector<int> *holes = new vector<int>[range]; // create new holes to put the birds there
+	int pigeonValue;
+	// put birds into proper cages
+	for (int pigeonIndex = 0; pigeonIndex < size; pigeonIndex++) {
+		pigeonValue = unsortedArray[pigeonIndex];
+		holes[pigeonValue - minValue].push_back(pigeonValue);
+	}
+	// From the pigeon cages, put those pigeons into original array ascendingly 
+	int originalArrayIndex = 0;
+	for (int holeIndex = 0; holeIndex < range; holeIndex++) {
+		vector<int>::iterator insideHolePointer;
+		for (insideHolePointer = holes[holeIndex].begin(); insideHolePointer != holes[holeIndex].end(); ++insideHolePointer) {
+			unsortedArray[originalArrayIndex] = *insideHolePointer;
+			++originalArrayIndex;
+		}
+	}
+
+	delete[] holes;
+
+}
+```
+12.2. Ý tưởng của thuật toán :
+
+Thuật toán xuất phát từ ý tưởng nhốt chim vào lồng áp dụng cho các số nguyên được thể hiện như sau : 
+
+- Đầu tiên, duyệt toàn bộ các phần tử trong mảng để tìm ra phần tử lớn nhất và nhỏ nhất trong mảng. Trừ hai giá trị này cho nhau, ta thu được Miền giá trị.
+- Từ miền giá trị này, ta tạo ra một tập các lồng chim, có số lượng bằng số vạch chia trong miền giá trị đó
+- Duyệt dãy số ban đầu (tập các con chim có gắn giá trị ), ta xét lần lượt giá trị của từng con chim và nhốt nó vào lồng (có chỉ số index bằng với giá trị của con chim đó). Sau khi duyệt xong toàn bộ, tất cả các chú chim đã được nhốt vào lồng. Các chú chim có cùng giá trị sẽ nằm trong cùng một lồng. Từ các lồng trên, ta sẽ biết được vị trí chính xác của một chú chim trong một dãy được sắp xếp tăng dần
+- Công việc còn lại chỉ đơn giản là mở từ lồng thứ nhất đến lồng cuối cùng để đưa lần lượt từng chú chim nối đuôi nhau đi ra ngoài. Thứ tự các chú chim bước ra ngoài chính là thứ tự sắp xếp tăng dần mà ta đang cần tìm !!!
+
+12.3. Độ phức tạp của giải thuật : 
+
+- Do bài toán cần phải duyệt qua m chiếc lồng, và n chú chim. Nên độ phức tạp của giải thuật sẽ là : O(n+m)
+
+12.4. Nhận xét và đánh giá
+
+- Yêu cầu của giải thuật Nhốt chim vào lồng : Số lượng các phần tử và miền giá trị của chúng phải khá gần nhau
+
+
 
 
 
