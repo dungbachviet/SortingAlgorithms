@@ -16,7 +16,7 @@ Còn bây giờ, chúng ta sẽ bắt đầu với giải thuật cơ bản đ�
 
 ## **1.	Thuật toán Selection Sort (Sắp xếp chọn)**
 
-1.1	Code minh họa 
+**1.1	Code minh họa**
 
 ```C++
 // algorithm for Selection Sort
@@ -33,24 +33,24 @@ void selectionSort(double *unsortedArray, int size) {
 
 ```
 
-1.2	Ý tưởng giải thuật  
+**1.2	Ý tưởng giải thuật** 
 
-Với một mảng số ban đầu chưa được sắp xếp gồm size phần tử. Ý tưởng của thuật toán được mô tả thông qua các bước sau : 
-+ Chọn 1 phần tử đầu tiên của dãy số, giả sử phần tử này là nhỏ nhất, lưu chỉ số phần tử này
-+ Duyệt để so sánh phần tử nhỏ nhất này với các phần tử còn lại (tiếp theo) của dãy số. Nếu phát hiện có bất kỳ phần tử nào nhỏ hơn phần tử nhỏ nhất hiện tại, ta tiến hành thay đổi chỉ số của phần tử nhỏ nhất (do phần tử có giá trị nhỏ nhất đã khác)
-+ Sau khi duyệt xong toàn bộ mảng, ta đã tìm ra được vị trí (chỉ số) của phần tử nhỏ nhất trong mảng đó. Lúc này, tiến hành hoán đổi vị trí của phần tử đầu tiên trong mảng với vị trí của phần tử nhỏ nhất trong mảng (đã thu được)
-+ Sau khi hoán đổi, phần tử nhỏ nhất sẽ luôn nằm “cố định” ở đầu mảng, và phần tử này sẽ không còn đóng góp vai trò nào cho những lần sắp xếp tiếp theo. Có nghĩa rằng, ta giả sử mảng mới cần phải sắp xếp sẽ chỉ còn size – 1 phần tử (phía sau phần tử đầu tiên cố định). Rồi thực hiện lặp lại quá trình trên từ bước 1 tới bước cuối cùng …với ý định sau mỗi quá trình lặp lại đó, ta sẽ tìm kiếm và cố định được phần tử nhỏ nhất, phần tử nhỏ thứ 2, … phần tử nhỏ thứ size – 1. Và giải thuật kết thúc !  
+Với một mảng số ban đầu chưa được sắp xếp gồm size phần tử. Ý tưởng của thuật toán được mô tả thông qua các bước chính như sau : 
++ Chọn 1 phần tử đầu tiên của dãy số, giả sử phần tử này là nhỏ nhất, sau đó lưu lại chỉ số phần tử đó
++ Duyệt để so sánh phần tử nhỏ nhất này với các phần tử còn lại (tức các phần tử tiếp theo của dãy số). Nếu phát hiện có bất kỳ phần tử nào nhỏ hơn phần tử cần so sánh, tiến hành thay đổi giá trị của chỉ số lưu trữ phần tử nhỏ nhất
++ Sau khi duyệt xong toàn bộ mảng, kết quả chúng ta tìm được đó là : vị trí (chỉ số) của phần tử nhỏ nhất trong mảng đó. Lúc này, thực hiện hoán đổi vị trí của : phần tử đầu tiên trong mảng và vị trí của phần tử nhỏ nhất (đã xác định tử bước trên)
++ Sau khi hoán đổi, phần tử nhỏ nhất sẽ luôn nằm “cố định” ở đầu mảng và phần tử này sẽ không còn đóng góp vai trò nào cho những lần sắp xếp tiếp theo. Do phần tử đầu tiên đã cố định, quá trình sắp xếp chỉ còn tác động lên size - 1 tiếp theo (không xét phần tử thứ nhất). Và thực hiện lặp lại một cách tương tự quá trình trên từ bước 1 tới bước cuối cùng … Sau mỗi quá trình lặp lại đó, ta sẽ lần lượt xác định và cố định ra được phần tử nhỏ thứ 2, phần tử nhỏ thứ 3 …, phần tử nhỏ thứ size – 1. Tới đây giải thuật kết thúc !  
 
-1.3	Độ phức tạp của thuật toán :  
+**1.3	Độ phức tạp của thuật toán :**  
 
 Thuật toán sử dụng 2 vòng for:
 +  Vòng for thứ nhất chạy từ index =  0 tới size – 2. 
 + Vòng for thứ hai chạy từ index + 1 tới cuối mảng
-Như vậy, đối với 1 dãy số gồm n phần tử , số lần duyệt qua từng phần tử trong mảng sẽ là : (n-1) + (n-2) + … + 1 . Vì vậy độ phức tạp của thuật toán trong tình huống tồi nhất sẽ là : O(n^2)  
+Như vậy, đối với 1 dãy số gồm n phần tử , số lần duyệt qua từng phần tử trong mảng sẽ là : (n-1) + (n-2) + … + 1 . Vì vậy độ phức tạp của thuật toán trong tình huống tồi tệ nhất sẽ là : O(n^2)  
 
-1.4. Nhận xét thuật toán  
+**1.4. Nhận xét thuật toán**  
 
-1.4.1. Ưu điểm  
+**1.4.1. Ưu điểm**  
 
 - Selection Sort là một giải thuật đã hạn chế được khá nhiều số lần lặp so với giải thuật Sắp xếp Nổi bọt (do nó sử dụng biến chỉ số để lưu lại phần tử nhỏ nhất,… để đến cuối cùng mới tiến hành hoán vị)
 - Giải thuật này có tính chất ổn định : Tức các phần tử các giá trị bằng nhau sẽ giữ nguyên vị trí tương đối của chúng như trước khi dãy số được sắp xếp
