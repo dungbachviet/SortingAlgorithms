@@ -178,7 +178,7 @@ Do phải trải qua (n-1) quá trình lan truyền, với mỗi quá trình lan
 
 **4.Thuật toán Merge Sort (Sắp xếp trộn)**
 
-4.1. Mã nguồn minh họa (python)
+**4.1. Mã nguồn minh họa (python)**
 
 ```Python
 def mergeSort(unsortedList, left, right) :
@@ -231,37 +231,37 @@ def merge(unsortedList, left, middle, right) :
     
 ```
     
-4.2. Ý tưởng của giải thuật : 
+**4.2. Ý tưởng của giải thuật :** 
 
 - Sử dụng tư tưởng đệ quy “chia để trị” với quan điểm việc sắp xếp tăng dần một dãy số sẽ tương ứng với các thao tác sau : 
 
   + Chia dãy số đó làm hai nửa (nửa trái và nửa phải)
-  + Thực hiện sắp xếp một cách đệ quy trên từng nửa đó (gọi đệ quy trên nửa trái và nửa phải, hàm gọi đệ quy là mergeSort(…))
-  + Mỗi nửa sau khi được sắp xếp sẽ được kết hợp, trộn lẫn với nhau để tạo ra một mảng hoàn chỉnh được sắp xếp tăng dần (sử dụng một hàm trộn merge(…) với đầu vào là 2 mảng đã được sắp xếp, hợp nhất hai mảng này để tạo thành mảng mới đã được sắp xếp)
+  + Thực hiện sắp xếp một cách đệ quy trên từng nửa đó (tức gọi hàm đệ quy mergeSort(…) trên lần lượt nửa trái và nửa phải)
+  + Mỗi nửa sau khi được sắp xếp sẽ được kết hợp, trộn lẫn với nhau để tạo ra một mảng hoàn chỉnh đã được sắp xếp như mong muốn (sử dụng một hàm trộn merge(…) với đầu vào là 2 mảng đã được sắp xếp, hợp nhất hai mảng này để tạo thành mảng mới đã được sắp xếp)
 
-- Đối với hàm mergeSort(…), điều kiện neo đệ quy là : chỉ số trái left >= chỉ số phải right. Tức tại điểm xảy ra điều kiện neo, lúc này dãy số đã được phân tách nhỏ nhất có thể ( nghĩa là chỉ chứa 1 phần tử), ta gọi các dãy con nhỏ nhất này là các dãy con đơn vị. Lúc này, các dãy con đơn vị đó sẽ đôi một thông qua hàm merge(…) để hợp nhất tạo thành một mảng lớn hơn đã được sắp xếp. Rồi mảng lớn hơn này có thể lại gặp một mảng lớn hơn khác để hợp nhất … Quá trình “hổi quy” này liên tục diễn ra cho tới khi chúng trở về lời gọi của hàm đệ quy gốc, để hợp nhất 2 nửa mảng cuối cùng còn lại và trả về một mảng hoàn chỉnh, đầy đủ và đã được sắp xếp
+- Đối với hàm mergeSort(…), điều kiện neo đệ quy là : chỉ số `left >= right`. Tức tại điểm xảy ra điều kiện neo, lúc này dãy số đã được phân tách nhỏ nhất có thể ( nghĩa là chỉ chứa 1 phần tử), ta gọi các dãy con nhỏ nhất này là các dãy con đơn vị. Lúc này, các dãy con đơn vị đó sẽ đôi một thông qua hàm merge(…) để hợp nhất tạo thành một mảng lớn hơn đã được sắp xếp. Rồi mảng lớn hơn này sẽ gặp một mảng lớn hơn khác để hợp nhất … Quá trình “hổi quy” này liên tục diễn ra cho tới khi chúng trở về lời gọi của hàm đệ quy gốc, để hợp nhất 2 nửa mảng cuối cùng còn lại và trả về một mảng hoàn chỉnh, đầy đủ và đã được sắp xếp
 
 - Trực quan hình ảnh có thể xem tại link sau : http://www.geeksforgeeks.org/merge-sort/
 
-4.3. Độ phức tạp của giải thuật :
+**4.3. Độ phức tạp của giải thuật :**
 
-Ta có độ phức tạp của thuật toán :  T(n) = 2T(n/2) + O(n)
+Ta có độ phức tạp của thuật toán :  `T(n) = 2T(n/2) + O(n)`
 
-Từ công thức trên + áp dụng với Định lý Thợ rút gọn (Trang 48, Sách Cấu trúc dữ liệu và giải thuật, Nguyễn Đức Nghĩa), ta dễ dàng tìm được độ phức tạp của giải thuật trên là : O(n*log(n))
+Từ công thức trên + áp dụng với Định lý Thợ rút gọn (Trang 48, Sách Cấu trúc dữ liệu và giải thuật, Nguyễn Đức Nghĩa), ta dễ dàng tìm được độ phức tạp của giải thuật trên là : `O(n*log(n))`
 
-4.4. Nhận xét và đánh giá 
+**4.4. Nhận xét và đánh giá** 
 
-4.4.1 Ưu điểm
+**4.4.1 Ưu điểm**
 
 - Đơn giản và dễ hiểu, thời gian sắp xếp với độ phức tạp đã được giảm xuống một cách đáng kể (O(nlog(n)) so với các giải thuật Sắp xếp Chèn, Nổi bọt, Chọn
 - Giải thuật Sắp xếp Trộn giữ được tính ổn định tương đối của các phần tử
 
-4.4.2. Nhược điểm
+**4.4.2. Nhược điểm**
 
 - Giải thuật Sắp xếp Trộn do cần phải sử dụng thêm vùng nhớ bên ngoài ( vùng nhớ dùng thêm này tỉ lệ với số lượng phần tử n) nên giải thuật không có tính chất tại chỗ
 - Độ phức tạp của giải thuật đều như nhau khi xét trên cả 3 trường hợp : Tốt nhất, Trung bình và Tồi nhất
 
-4.5. Tối ưu thuật toán và các bài toán ứng dụng thực tế
+**4.5. Tối ưu thuật toán và các bài toán ứng dụng thực tế**
 
 - Một cách tối ưu được để xuất cho giải thuật sắp xếp Trộn đó là sử dụng cấu trúc dữ liệu Danh sách Liên kết thay vì sử dụng mảng. 
   + Bởi vì điểm mạnh của DSLK đó là khả năng đáp ứng một tập dữ liệu đến một cách liên tục (dữ liệu thực tế). Hơn nữa, các thao tác chèn, sửa, xóa một phần tử trong danh sách liên kết chỉ tốn thời gian O(1), nhanh chóng hơn so với thời gian tuyến tính khi chèn, sửa, xóa một phần tử trong mảng. Áp dụng tính chất của DSLK vào giải thuật Sắp xếp Trộn, sẽ giúp tiết kiệm được vùng nhớ ( tức ko cần sử dụng vùng nhớ ngoài – giữ được tính chất “tại chỗ” của giải thuật), đồng thời giải quyết được các bài toán với luồng dữ liệu đến liên tục (online) trong thực tế cuộc sống
@@ -270,9 +270,10 @@ Từ công thức trên + áp dụng với Định lý Thợ rút gọn (Trang 4
   + Bài toán đếm số đảo ngược :  http://www.geeksforgeeks.org/counting-inversions/
   + Bài toán liên quan tới lĩnh vực sắp xếp tại vùng nhớ ngoài (not sorting in RAM) : https://en.wikipedia.org/wiki/External_sorting
 
-5.Thuật toán Heap Sort (Sắp xếp vun đống)
+**5.Thuật toán Heap Sort (Sắp xếp vun đống)**
 
-5.1. Mã nguồn minh họa : 
+**5.1. Mã nguồn minh họa :**
+
 ```C++
  void updateHeapAt(double *heapedArray, int size, int updatedPosition) {
 	int largestIndex = updatedPosition; // index of the largest element
@@ -309,52 +310,52 @@ void heapSort(double *unsortedArray, int size) {
 }
 ```
 
-5.2. Ý tưởng giải thuật 
+**5.2. Ý tưởng giải thuật**
 
-- Tư tưởng của giải thuật xuất phát từ cơ sở Cây vun đống Max ( hay Cây vun đống Min). Một cách tương tự nhau, ta sẽ lựa chọn cây vun đống Max để minh họa giải thuật Sắp xếp Vun đống
-- Cây vun đống Max ở đây được quan niệm là cây nhị phân hoàn chỉnh, tức với mỗi nút cha sẽ luôn bao gồm 2 con (trừ hàng ở độ sâu cuối cùng), và các con phải được phân bố theo cách trái nhất có thể. Do cây vun đống được đề xuất minh họa trong giải thuật này là Max Heap Tree, tính chất Maximum được thể hiện theo cách ràng buộc : Nút cha phải lớn hơn hoặc bằng hai nút con ( còn các nút con cùng cấp thì không có ràng buộc với nhau). Như vậy, mỗi nhánh mà được đại diện bởi bất cứ nút nào đó trong cây cũng sẽ phải là một nhánh Max Heap.
-- Cây vun đống có thể được cài đặt sử dụng : Mảng hoặc Danh sách Liên kết. Để đơn giản trong sự minh họa, chúng ta sẽ lựa chọn Mảng cho quá trình cài đặt giải thuật
-- Tiếp theo đó, ta sẽ làm gì với cây Max Heap Tree này, khi biết được một tính chất vô cùng quan trọng của nó : Giá trị của cha luôn lớn hơn hoặc bằng giá trị của mỗi con. Điều đó, cho thấy phần tử gốc sẽ là phần tử lớn nhất trong dãy. Ta tiến hành hoán đổi phần tử gốc với 1 phần tử cuối cùng của lá (nút cuối cùng), lúc này, nút lá (“thấp bé nhỏ con”) được đưa lên đầu (root, rễ cây), đồng thời cố định, hay tách phần tử cuối cùng (lớn nhất đó) ra khỏi cây trên. Tại thời điểm này, cây hiện tại không còn mang tính chất Max Heap (bởi vì lá được đưa lên gốc có thể nhỏ hơn 2 con của nút cha bị thay thế). Tại đây ta cần phải tiến hành xây dựng một giải thuật mang tên updateHeapAt(...) giúp cập nhật lại cây trên để đưa nó trở về đúng dạng cây Max Heap Tree . Hàm này sẽ sử dụng tính chất quan trọng từ cây “bị sai lệch” trên, đó là : 2 nhánh con của phần tử gốc đó  hiện tại vẫn mang tính chất Max Heap. Sau khi, đi qua hàm này, cây trên sẽ được cập nhật về đúng dạng Max Heap... Tiếp theo, hoàn toàn tương tự, ta lại hoán đổi gốc của cây với phần tử lá cuối cùng, đồng thời cố định và loại bỏ phần tử lớn nhất ra khỏi cây, rồi lại cập nhật lại cây ... Quá trình như vậy cứ diễn ra cho tới khi cây chỉ còn duy nhất một phần tử (đó cũng sẽ chính là phần tử nhỏ nhất trong dãy số ). .... Sau quá trình trên, chúng ta sẽ thu được một mảng dãy số đã được sắp xếp theo giải thuật Vun Đống
+- Tư tưởng của giải thuật xuất phát từ cơ sở Cây vun đống Max ( hay Cây vun đống Min). Một cách tương tự nhau, ta sẽ lựa chọn cây vun đống Max để minh họa giải thuật Sắp xếp vun đống
+- Cây vun đống Max ở đây được quan niệm là cây nhị phân hoàn chỉnh, tức với mỗi nút cha sẽ luôn bao gồm 2 con (trừ hàng ở độ sâu cuối cùng), và các con luôn được phân bố một cách trái nhất có thể. Do cây vun đống được đề xuất minh họa trong giải thuật này là Max Heap Tree, nên có thêm tính chất Maximum được thể hiện như sau : Nút cha phải lớn hơn hoặc bằng hai nút con ( còn các nút con cùng cấp thì không có ràng buộc với nhau). Như vậy, mỗi nhánh mà được đại diện bởi bất cứ nút nào đó trong cây cũng sẽ phải là một nhánh Max Heap.
+- Cây vun đống có thể được cài đặt sử dụng Mảng hoặc Danh sách Liên kết. Để đơn giản trong sự minh họa, chúng ta sẽ lựa chọn Mảng cho quá trình cài đặt giải thuật
+- Tiếp theo đó, ta sẽ làm gì với cây Max Heap Tree này, khi biết được một tính chất vô cùng quan trọng của nó : Giá trị của cha luôn lớn hơn hoặc bằng giá trị của mỗi con. Điều đó, cho thấy phần tử gốc sẽ là phần tử lớn nhất trong dãy. Ta tiến hành hoán đổi phần tử gốc với 1 phần tử cuối cùng của lá (nút cuối cùng), lúc này, nút lá (“thấp bé nhỏ con”) được đưa lên đầu (root, rễ cây), đồng thời tách biệt và cất giữ phần tử lớn nhất ở một nơi nào đó. Tại thời điểm này, cây hiện tại không còn mang tính chất Max Heap (bởi vì lá được đưa lên gốc có thể nhỏ hơn 2 con của nút cha bị thay thế). Tại đây ta cần phải tiến hành xây dựng một giải thuật mang tên updateHeapAt(...) giúp cập nhật lại cây trên để đưa nó trở về đúng dạng cây Max Heap Tree . Hàm này sẽ sử dụng tính chất quan trọng từ cây “bị sai lệch” trên, đó là : 2 nhánh con của phần tử gốc hiện tại vẫn mang tính chất Max Heap. Sau khi, đi qua hàm này, cây trên sẽ được cập nhật về đúng dạng Max Heap... Rồi ta lại hoán đổi gốc của cây với phần tử lá cuối cùng, đồng thời lại tách biệt phần tử lớn nhất ra khỏi cây, rồi lại cập nhật lại cây ... Các quá trình cứ diễn ra một cách tuần hoàn cho tới khi cây chỉ còn duy nhất một phần tử (đó cũng sẽ chính là phần tử nhỏ nhất trong dãy số ). .... Kết thúc giải thuật Heap Sort, chúng ta sẽ thu được một mảng dãy số đã được sắp xếp như ý muốn !
 - Khi cài đặt cây Max Heap theo dạng mảng số, có một tính chất sau cần chú ý: 
   + LeftChildIndex = 2 * ParentIndex + 1
   + RightChildIndex = 2 * ParentIndex + 2
-- Vì mỗi dãy số ban đầu ( được lưu trữ trong mảng) là ngẫu nhiên, chưa được có tính chất Max Heap, vì thế ta cần có phải có một bước ban đầu để khởi tạo một cây mang đặc điểm Max Heap này ( thủ tục này được được tạo trong hàm heapSort(...) )
+- Vì input hay mỗi dãy số ban đầu (được lưu trữ dưới dạng mảng) là ngẫu nhiên, chưa được có tính chất Max Heap, vì thế ta cần có phải có một bước đầu để chuyển hóa cây trên thành một cây mang đặc điểm Max Heap ( thủ tục này được được tạo trong hàm heapSort(...) )
 - Như vậy, hàm heapSort sẽ bao quát những công việc sau : 
-  + Khởi tạo một cây Max Heap Tree
-  + Từ cây Max Heap Tree, tiến hành trích lấy phần tử lớn nhất ở root, và thay thế root bởi nút lá cuối cùng. Sau đó, gọi hàm updateHeapAt(...) cập nhật lại cây trên tại root mới đó, rồi lại trích phần tử root, và thay thế bởi lá,...Quá trình diễn ra một cách tương tự, cho tới khi cây chỉ còn 1 phần tử. Và phần tử đó sẽ là phần tử nhỏ nhất trong mảng. Kết quả, ta thu được một mảng gồm dãy số đã được sắp xếp tăng dần !  
+  + Khởi tạo một cây Max Heap Tree từ một dãy ngẫu nhiên
+  + Từ cây Max Heap Tree, tiến hành trích lấy phần tử lớn nhất ở root, và thay thế vị trí root bởi nút lá cuối cùng. Sau đó, gọi hàm updateHeapAt(...) cập nhật lại cây trên tại root mới đó, rồi lại trích lấy phần tử root, và thay thế vị trí root bởi lá,...Quá trình diễn ra một cách tương tự, cho tới khi cây chỉ còn 1 phần tử. Và phần tử đó sẽ là phần tử nhỏ nhất trong mảng. Kết quả, ta thu được một mảng gồm các số đã được sắp xếp tăng dần !  
   
-5.3. Độ phức tạp của giải thuật : 
+**5.3. Độ phức tạp của giải thuật :**
 
-- Thủ tục updateHeapAt (...) có độ phức tạp là O(log(n)) : Do số lần duyệt của thủ tục này cỡ bằng độ sâu của cây nhị phân
+- Thủ tục updateHeapAt (...) có độ phức tạp là `O(log(n))` : Do số lần duyệt của thủ tục này cỡ bằng độ sâu của cây nhị phân
 - Đối với thủ tục heapSort, ta có thể đánh giá độ phức tạp một cách tương đối như sau : 
-  + Vòng for đầu tiên : O(log(n/2) + log(n/2 + 1) + ... + log(n)) <= O(n.log(n))
-  + Vòng for thứ hai : O(log(n) + log(n-1) + ... + log(1)) <= O(n.log(n))
+  + Vòng for đầu tiên : `O(log(n/2) + log(n/2 + 1) + ... + log(n)) <= O(n.log(n))`
+  + Vòng for thứ hai : `O(log(n) + log(n-1) + ... + log(1)) <= O(n.log(n))`
   
-Như vậy, độ phức tạp của giải thuật Heap Sort là : O(n.log(n))
+Như vậy, độ phức tạp của giải thuật Heap Sort là : `O(n.log(n))`
 
-5.4. Nhận xét và đánh giá
+**5.4. Nhận xét và đánh giá**
 
-- Ưu điểm :
+**5.4.1 Ưu điểm :**
 
   + Khá nhanh (O(n.log(n)), tuy nhiên trong thực nghiệm lại kém hơn so với giải thuật QuickSort và MergeSort.
   + Cấu trúc dữ liệu dạng vun đống được sử dụng rộng rãi trong nhiều bài toán
   + Heap Sort là một giải thuật sắp xếp tại chỗ
 
-- Nhược điểm :  
+**5.4.2 Nhược điểm :**  
 
-  + Với cách cài đặt trên, giải thuật này chưa có tính chất ổn định. Tuy nhiên, có thể cài đặt giải thuật trên để nó có tính chất ổn định, hãy khảo cứu từ nguồn sau đây: http://www.geeksforgeeks.org/stability-in-sorting-algorithms/
+  + Với cách cài đặt trên, giải thuật này chưa có tính chất ổn định. Tuy nhiên, có thể cài đặt giải thuật trên để nó có tính chất ổn định, hãy tham khảo từ nguồn sau đây: http://www.geeksforgeeks.org/stability-in-sorting-algorithms/
   + Hơi phức tạp trong cài đặt giải thuật
   
-5.5. Sự tối ưu và ứng dụng thực tế
+**5.5. Sự tối ưu và ứng dụng thực tế**
 
 - Một số ứng dụng của Sắp xếp vun đống có thể kể tới : 
   + Sort a nearly sorted array : http://www.geeksforgeeks.org/nearly-sorted-algorithm/
   + K largest (or smallest) elements in an array : http://www.geeksforgeeks.org/k-largestor-smallest-elements-in-an-array/
   + Applications of Heap Data Structure : http://www.geeksforgeeks.org/applications-of-heap-data-structure/
 
-6.	Thuật toán Quick Sort (Sắp xếp nhanh)
+**6. Thuật toán Quick Sort (Sắp xếp nhanh)**
 
-6.1. Mã nguồn minh họa : 
+**6.1. Mã nguồn minh họa :** 
 ```Java
     public static void swap(double[] unsortedArray, int index1, int index2) {
         double intermediate = unsortedArray[index1];
@@ -461,31 +462,32 @@ Như vậy, độ phức tạp của giải thuật Heap Sort là : O(n.log(n))
     }
 ```
 
-6.2. Tư tưởng của giải thuật 
+**6.2. Tư tưởng của giải thuật** 
 
 Giải thuật Quick Sort với tư tưởng chính : 
 
 + Lựa chọn một phần tử trong mảng đóng vai trò như một pivot, sau đó từ giá trị pivot này tiến hành phân lớp mảng thành 2 phần với một phần chỉ toàn gồm các phần tử nhỏ hơn hoặc bằng pivot, trong khi phần còn lại chứa các phần tử lớn hơn pivot. 
 + Từ hai nửa còn lại ( không xét tới phần tử pivot, bởi vì vị trí của nó đã là cố định), ta tiến hành gọi một cách đệ quy hàm quickSort(...) trên từng nửa đó. Kết quả cuối cùng ta thu được, đó là mảng ban đầu đã được sắp xếp
-Vấn đề của thao tác lựa chọn Pivot : Một câu hỏi được đưa ra, đó là, làm sao để lựa chọn 1 phần tử pivot tốt nhất có thể (tức giá trị của nó nằm ở mức trung bình so với các phần tử còn lại). Dưới đây là một vài đề xuất lựa chọn pivot mà chúng ta có thể tham khảo : 
-+ Lựa chọn pivot nằm ở đầu mảng
-+ Lựa chọn Pivot nằm ở cuối mảng
-+ Lựa chọn Pivot một cách bất kỳ và tùy ý
-+ Lựa chọn Pivot tại chỉ số index = (left + right) / 2 
-Phía trên mình đã trình bày các cách cài đặt của từng sự lựa chọn Pivot thông qua ngôn ngữ Java, với một vài điểm chú ý có thể kể tới như sau :
-+ Giải thuật lựa chọn Pivot nằm đầu và cuối mảng được xây dựng theo hai cách mang 2 tư tưởng khá khác biệt
-+ Giải thuật lựa chọn pivot bất kỳ, hay lựa chọn pivot nằm ở chỉ số trung bình... được quy về cách lựa chọn pivot nằm ở đầu và cuối mảng ( chỉ với một thao tác đơn giản là hoán vị tương ứng pivot đó với phần tử ở đầu (hoặc cuối) mảng). Trong giải thuật này, mình xin để xuất đưa về cách cài đặt chọn pivot ở đầu mảng
+Vấn đề của thao tác lựa chọn Pivot :  
+- Có một câu hỏi được đặt ra đó là làm sao để lựa chọn 1 phần tử pivot tốt nhất có thể (tức giá trị của nó nằm ở mức trung bình so với các phần tử còn lại). Dưới đây là một vài đề xuất lựa chọn pivot mà chúng ta có thể tham khảo : 
+  + Lựa chọn pivot nằm ở đầu mảng
+  + Lựa chọn Pivot nằm ở cuối mảng
+  + Lựa chọn Pivot một cách bất kỳ và tùy ý
+  + Lựa chọn Pivot tại chỉ số index = (left + right) / 2 
+- Phía trên mình đã trình bày các cách cài đặt của từng sự lựa chọn Pivot thông qua ngôn ngữ Java, với một vài điểm chú ý có thể kể tới như sau :
+  + Giải thuật lựa chọn Pivot nằm đầu và cuối mảng được xây dựng theo hai cách mang 2 tư tưởng khá khác biệt
+  + Giải thuật lựa chọn pivot bất kỳ, hay lựa chọn pivot nằm ở chỉ số trung bình... được quy về cách lựa chọn pivot nằm ở đầu và cuối mảng ( chỉ với một thao tác đơn giản là hoán vị tương ứng pivot đó với phần tử ở đầu (hoặc cuối) mảng). Trong giải thuật này, mình xin để xuất đưa về cách cài đặt chọn pivot ở đầu mảng
 
-6.3. Độ phức tạp của giải thuật
+**6.3. Độ phức tạp của giải thuật**
 
-Độ phức tạp của giải thuật QuickSort là : T(n) = T(k) + T(n-k-1) + O(n) , với k là số phần tử bên nửa trái. Từ đó, trong từng trường hợp : 
+Độ phức tạp của giải thuật QuickSort là : `T(n) = T(k) + T(n-k-1) + O(n)` , với k là số phần tử bên nửa trái. Từ đó, trong từng trường hợp : 
 + Tồi tệ nhất, ứng với k = 0 : 
-T(n) = T(0) + T(n-1) + O(n) = T(n-1) + O(n) = O(n^2)
+`T(n) = T(0) + T(n-1) + O(n) = T(n-1) + O(n) = O(n^2)`
 + Tốt nhất, ứng với k = n/2 
-T(n) = 2T(n/2) + O(n) = O(nlog(n))
-+ Trung bình : T(n) = O(nlog(n))
+`T(n) = 2T(n/2) + O(n) = O(nlog(n))`
++ Trung bình : `T(n) = O(nlog(n))`
 
-6.4. Nhận xét và đánh giá 
+**6.4. Nhận xét và đánh giá**
 
 - Mặc dù, thuật toán có độ phức tạp O(n^2) đối với trường hợp tồi tệ nhất. Tuy nhiên trong thực nghiệm, độ phức tạp trung bình của giải thuật ổn định ở mức O(n.log(n))
 - Là một trong số những giải thuật có tốc độ nhanh, hiệu quả và phổ biến top đầu lớp các giải thuật sắp xếp ( QuickSort, HeapSort, MergeSort)
@@ -493,7 +495,7 @@ T(n) = 2T(n/2) + O(n) = O(nlog(n))
 - Hoạt động tối ưu hơn khi cài đặt sử dụng mảng
 - Có sự hạn chế khi cài đặt giải thuật sử dụng cấu trúc dữ liệu Danh sách Liên kết (bởi vì trong giải thuật Quick Sort có khá nhiều thao tác so sánh, và cần phải thường xuyên truy xuất phần tử … nên cần tiêu tốn một khoảng thời gian tuyến tính để tìm phần tử đó trong dánh sách liên kết)
 
-6.5. Tối ưu và các bài toán ứng dụng 
+**6.5. Tối ưu và các bài toán ứng dụng** 
 
 - Tối ưu 1 : Sử dụng phương pháp Quick 3 chiều, có nghĩa là sau khi lựa được giá trị pivot, ta sẽ chia mảng thành 3 phần, gồm các phần tử nhỏ hơn pivot, bằng pivot và lớn hơn pivot ( details at following link : http://www.geeksforgeeks.org/quick-sort/)
 - Tối ưu 2 : Đối với việc lựa chọn pivot luôn nằm ở cực trái ( hoặc cực phải) của mảng mang tới nguy cơ dẫn tới các trường hợp tồi tệ nhất, tức : Mảng đã được sắp xếp theo đúng thứ tự, hoặc mảng đã được sắp xếp theo thứ tự ngược lại, hoặc tất cả các phần tử của mảng đều bằng nhau. Để hạn chế được các tình huống trên, ta sẽ lựa chọn pivot theo những cách khác, như: pivot nằm ở index trung bình, pivot có index ngẫu nhiên, … Sau đó ta có thể dễ dàng quy các bài toán này về bài toán chọn pivot nằm ở cực trái hoặc cực phải
@@ -503,9 +505,10 @@ T(n) = 2T(n/2) + O(n) = O(nlog(n))
   + Sử dụng danh sách liên kết đơn : http://www.geeksforgeeks.org/quicksort-on-singly-linked-list/
   + Sử dụng danh sách liên kết đôi: http://www.geeksforgeeks.org/quicksort-for-linked-list/
   
-7.Thuật toán Counting Sort (Sắp xếp đếm)
+**7.Thuật toán Counting Sort (Sắp xếp đếm)**
 
-7.1 Mã nguồn minh họa :
+**7.1 Mã nguồn minh họa :**
+
 ```C++
 void countingSort(char *unsortedString) {
 	int lenOfString = strlen(unsortedString);
@@ -543,32 +546,32 @@ void countingSort(char *unsortedString) {
 
 ```
 
-7.2. Ý tưởng của giải thuật
+**7.2. Ý tưởng của giải thuật**
 
 Giải thuật được xuất phát từ ý tưởng “Đếm” áp dụng cho dãy số nguyên được thể hiện như sau : 
 
-+ Ràng buộc miền giá trị của các phần tử trong mảng, sau đó tạo ra một mảng trung gian có khả năng chứa số lượng phần tử bằng đúng số vạch chia trong miền giá trị cho phép đó. Gán giá trị cho các phần tử của mảng đều bằng 0
-+ Như vậy, giá trị của mỗi phần tử từ dãy số ban đầu sẽ được thể hiện bằng giá trị của chỉ số trong mảng trung gian. Tiếp theo, tiến hành duyệt từng phần tử của mảng gốc, ứng với mỗi phần tử xuất hiện trong mảng gốc này sẽ được cộng thêm 1 vào phần tử có chỉ số tương ứng (bằng giá trị của phần tử trong mảng gốc). Sau khi duyệt xong toàn bộ mảng gốc, mảng trung gian lúc này sẽ chứa số lần xuất hiện của các phần tử trong mảng gốc trong dãy số ban đầu
-+ Tiếp tục khai thác và chế biến mảng trung gian để nó trở nên hữu ích hơn, bằng cách duyệt từng phần tử của mảng trung gian, từ phần tử thứ 2 trở đi. Sau đó cộng dồn phần tử hiện tại với phần tử trước đó và gán lại vào phần tử hiện tại. Cứ như vậy, tới khi duyệt hết mảng, ta sẽ thu được một mảng trung gian vô cũng hữu ích, lúc này giá trị của trong mỗi phần tử trung gian sẽ cho biết giá trị index thực sự của giá trị gốc đó trong mảng đã được sắp xếp
-+ Thao tác cuối cùng, chỉ đơn giản là duyệt lại mảng gốc, kết hợp với mảng trung gian để lấy ra các phần tử tương ứng theo thứ tự đã được sắp xếp  tăng dần!!!
++ Chọn một miền giá trị bao phủ được tất cả các giá trị của từng phần tử trong mảng, sau đó tạo mới một mảng trung gian có sức chứa bằng đúng số vạch chia đơn vị trong miền giá trị (được lựa chọn trên). Gán giá trị cho tất cả phần tử trong mảng bằng 0
++ Như vậy, giá trị của mỗi phần tử từ dãy số ban đầu sẽ được thể hiện bằng giá trị của chỉ số trong mảng trung gian. Tiếp theo, tiến hành duyệt từng phần tử của mảng gốc, ứng với mỗi phần tử xuất hiện trong mảng gốc này sẽ được cộng thêm 1 vào phần tử có chỉ số bằng với giá trị của phần tử trong mảng gốc. Sau khi duyệt xong toàn bộ mảng gốc, mảng trung gian lúc này sẽ chứa số lần xuất hiện của các phần tử trong mảng gốc trong dãy số ban đầu
++ Tiếp tục khai thác và chế biến mảng trung gian để nó trở nên hữu ích hơn bằng cách duyệt từng phần tử của mảng trung gian, từ phần tử thứ 2 trở đi. Sau đó cộng dồn phần tử hiện tại với phần tử trước đó và gán lại vào phần tử hiện tại. Cứ như vậy, tới khi duyệt hết mảng, ta sẽ thu được một mảng trung gian vô cũng hữu ích, lúc này giá trị của trong mỗi phần tử trung gian sẽ cho biết giá trị index thực sự của giá trị gốc đó trong mảng khi đã được sắp xếp
++ Thao tác cuối cùng, chỉ đơn giản là duyệt lại mảng gốc, kết hợp với mảng trung gian để lấy ra các phần tử tương ứng theo thứ tự đã được sắp xếp!!!
 
-7.3. Độ phức tạp của giải thuật : 
+**7.3. Độ phức tạp của giải thuật :**
 
 Thủ tục countingSort yêu cầu duyệt qua n phần tử từ dãy số gốc, và m phần tử (số vạch chia trong miền giá trị bao phủ). Do vậy, độ phức tạp sẽ là : O(n+m)
 
-7.4. Nhận xét và đánh giá :
+**7.4. Nhận xét và đánh giá :**
 
 - Thuật toán chỉ hiệu quả khi mà miền giá trị của dữ liệu không lớn hơn quá nhiều so với tổng số phần tử trong mảng gốc. Nó sẽ không hiệu quả nếu miền giá trị là một hàm mũ, lũy thừa so với số phần tử cần phải sắp xếp. Vì vậy, cần phải cân nhắc kỹ
 - Không sử dụng phương pháp sắp xếp dựa trên quá trình so sánh, mà sử dụng chủ yếu vào bộ nhớ lưu trữ
 
-7.5. Tối ưu và ứng dụng thực tế : 
+**7.5. Tối ưu và ứng dụng thực tế :** 
 
 - Giải thuật được sử dụng như một giai đoạn trong giải thuật Radix Sort
 - Giải thuật cũng có thể được mở rộng để làm việc với các số nguyên âm, hay sắp xếp các chuỗi ký tự
 
-8. Thuật toán Radix Sort (Sắp xếp theo cơ số)  
+**8. Thuật toán Radix Sort (Sắp xếp theo cơ số)**  
 
-8.1. Mã nguồn minh họa
+**8.1. Mã nguồn minh họa**
 ```C++
 int maximum(int *unsortedArray, int size) {
 	int maximumValue = unsortedArray[0];
@@ -622,7 +625,7 @@ void radixSort(int *unsortedArray, int size) {
 }
 
 ```
-8.2. Ý tưởng của giải thuật :
+**8.2. Ý tưởng của giải thuật :**
 
 Giải thuật sắp xếp theo cơ số 10 với tư tưởng chính sau:
 
