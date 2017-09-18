@@ -46,7 +46,7 @@ Với một mảng số ban đầu chưa được sắp xếp gồm size phần 
 Thuật toán sử dụng 2 vòng for:
 +  Vòng for thứ nhất chạy từ index =  0 tới size – 2. 
 + Vòng for thứ hai chạy từ index + 1 tới cuối mảng
-Như vậy, đối với 1 dãy số gồm n phần tử , số lần duyệt qua từng phần tử trong mảng sẽ là : (n-1) + (n-2) + … + 1 . Vì vậy độ phức tạp của thuật toán trong tình huống tồi tệ nhất sẽ là : O(n^2)  
+Như vậy, đối với 1 dãy số gồm n phần tử , số lần duyệt qua từng phần tử trong mảng sẽ là : `(n-1) + (n-2) + … + 1 `. Vì vậy độ phức tạp của thuật toán trong tình huống tồi tệ nhất sẽ là : `O(n^2)`  
 
 **1.4. Nhận xét thuật toán**  
 
@@ -57,18 +57,18 @@ Như vậy, đối với 1 dãy số gồm n phần tử , số lần duyệt qu
 - Không đòi hỏi thêm không gian nhớ phụ, nên giải thuật mang tính chất “ Tại chỗ”
 - Trong thực tế, giải thuật này có thể được sử dụng như một giải pháp hỗ trợ cho một giai đoạn nào đó trong những giải thuật sắp xếp khác
 
-1.4.2. Nhược điểm :   
+**1.4.2. Nhược điểm :**   
 
-- Độ phức tạp của giải thuật tuy đã được cải thiện nhưng nhìn chung vẫn còn khá lớn so với các thuật toán sắp xếp hiệu quả
-- Chưa giải quyết được vấn đề : đầu vào đã được sắp xếp
+- Độ phức tạp của giải thuật tuy đã được cải thiện nhưng nhìn chung vẫn còn khá lớn so với các thuật toán sắp xếp hiệu quả khác (như QuickSort, MergeSort)
+- Chưa giải quyết được vấn đề khi mà đầu vào của dãy số đã được sắp xếp
 
-1.5. Giải pháp tối ưu :  
+**1.5. Giải pháp tối ưu :**  
 
-- Trong tình huống dãy số đầu vào đã được sắp xếp, giải pháp được đưa ra sẽ là : Sử dụng một biến hasSwapped để duyệt từ đầu tới cuối mảng, để phát hiện xem dãy số được sắp xếp tăng dần hay giảm dần chưa? Nếu hasSwapped = 0 khi duyệt theo chiều thuận tức dãy đã được sắp xếp tăng dần. Nếu hasSwapped = 0 khi duyệt theo chiều nghịch, tức dãy đã được sắp xếp giảm dần, vì thế sắp xếp lại tăng dần, ta chỉ việc đảo ngược dãy số đó!
+- Trong tình huống dãy số đầu vào đã được sắp xếp, giải pháp được đưa ra sẽ là : Sử dụng một biến hasSwapped để duyệt từ đầu tới cuối mảng, để phát hiện xem dãy số đã được sắp xếp tăng dần hay giảm dần hay chưa? Nếu hasSwapped = 0 khi duyệt theo chiều thuận tức dãy đã được sắp xếp tăng dần. Nếu hasSwapped = 0 khi duyệt theo chiều nghịch, tức dãy đã được sắp xếp giảm dần, vì thế chỉ cần đảo ngược lại dãy số đó để có một thứ tự đúng!
 
-2.Thuật toán Insertion Sort (Sắp xếp chèn)  
+**2.Thuật toán Insertion Sort (Sắp xếp chèn)** 
 
-2.1. Mã nguồn minh họa :  
+**2.1. Mã nguồn minh họa :**  
 
 ```C++
 // algorithm for Insertion Sort
@@ -88,46 +88,47 @@ void insertionSort(double *unsortedArray, int size) {
 }  
 ```  
 
-2.2. Ý tưởng của giải thuật :  
+**2.2. Ý tưởng của giải thuật :**  
 
 Giải thuật này xuất phát từ các thao tác sắp xếp của những người chơi bài. Tư tưởng đó được thể hiện như sau :   
 
-+ Từ một tập bài gồm n quân bài của người chơi, họ cần phải sắp xếp thứ tự các quân bài trên tay theo một thứ tự tăng dần. Lúc này, họ sẽ duyệt từ quân bài thứ 2 tới quân bài cuối cùng (thứ n). Đối với quân bài thứ 2, họ cần phải so sánh quân bài này với các quân bài phía trước nó, tức lúc này là quân bài thứ 1. Rõ ràng, các quân bài phía trước quân bài thứ 2 đều đã được sắp xếp ( do chỉ có 1 quân bài phía trước). Công việc của người chơi lúc này, là chỉ cần chèn quân bài thứ 2 vào vị trí thích hợp trong số các quân bài phía trước sao cho chúng được sắp xếp theo một thứ tự tăng dần
-+ Tiếp tục với việc xét quân bài thứ 3, ta tiến hành so sánh quân bài này với dãy các quân bài đã được sắp xếp ở phía trước nó. Sau đó tiến hành thực hiện thao tác chèn quân bài này vào ví trí thích hợp trong dãy các quân bài phía trước đó, để tạo thành một dãy con được sắp xếp tăng dần.
-+ Một cách hoàn toàn tương tự với các quân bài thứ 4, 5 … n. Kết thúc quá trình này, ta sẽ thu được một dãy số được sắp xếp tăng dần  
++ Từ một tập bài gồm n quân bài của người chơi, họ cần phải sắp xếp thứ tự các quân bài trên tay theo một thứ tự tăng dần. Lúc này, họ sẽ duyệt từ quân bài thứ 2 tới quân bài cuối cùng (thứ n). Đối với quân bài thứ 2, họ cần phải so sánh quân bài này với các quân bài phía trước nó, tức lúc này là quân bài thứ 1. Rõ ràng, các quân bài phía trước quân bài thứ 2 đều đã được sắp xếp ( do chỉ có 1 quân bài phía trước). Công việc của người chơi lúc này là chỉ cần chèn quân bài thứ 2 vào vị trí thích hợp trong số các quân bài phía trước sao cho sau thao tác chèn này, các quân bài phía trước cũng phải được sắp xếp theo một thứ tự tăng dần
++ Tiếp tục với việc xét quân bài thứ 3, ta tiến hành so sánh quân bài này với dãy các quân bài đã được sắp xếp ở phía trước nó. Sau đó tiến hành thực hiện thao tác chèn quân bài này vào ví trí thích hợp trong dãy các quân bài phía trước để tạo thành một dãy con được sắp xếp tăng dần.
++ Một cách hoàn toàn tương tự với các quân bài thứ 4, 5 … n.   
+Kết thúc quá trình này, ta sẽ thu được một dãy số được sắp xếp tăng dần  
 
-2.3. Độ phức tạp của thuật toán   
+**2.3. Độ phức tạp của thuật toán**   
 
-Do đối với mỗi quân bài được lựa chọn, ta đều so sánh nó với các quân bài ở phía trước. Nhìn nhận một các thoải mái trong tình huống xấu nhất, số lần phần duyệt qua các phần tử trong mảng sẽ là : 1 + 2 + … + (n – 1). Có nghĩa độ phức tạp trong tình huống xấu nhất là : O(n^2)  
+Do đối với mỗi quân bài được lựa chọn, ta đều so sánh nó với các quân bài ở phía trước. Nhìn nhận một các thoải mái trong tình huống xấu nhất, số lần phần duyệt qua các phần tử trong mảng sẽ là : `1 + 2 + … + (n – 1)`. Có nghĩa độ phức tạp trong tình huống xấu nhất là : `O(n^2)`  
 
-2.4. Nhận xét và đánh giá  
+**2.4. Nhận xét và đánh giá**  
 
-2.4.1. Ưu điểm :  
+**2.4.1. Ưu điểm :**  
 
 - Làm việc tốt trong trường hợp mảng có ít phần tử
 - Giải thuật có tính chất ổn định và tại chỗ
-- Được sử dụng như một sự hỗ trợ trong một vài giai đoạn con của một vài thuật toán sắp xếp khác
+- Được sử dụng như một sự hỗ trợ trong một vài giai đoạn con ở một số thuật toán sắp xếp khác
 - Đơn giản, dễ hiểu và dễ cài đặt
 - Là thuật toán sắp xếp tốt nhất đối với dãy đã gần được sắp xếp , nghĩa là mỗi phần tử đã đứng ở vị trí rất gần vị trí trong thứ tự cần sắp xếp  
 
-2.4.2. Nhược điểm :   
+**2.4.2. Nhược điểm :**   
 
 - Độ phức tạp trung bình vẫn còn khá lớn O(n^2) so với các thuật toán sắp xếp nhanh nhất hiện nay như QuickSort  
 
-2.5. Sự tối ưu, so sánh và mở rộng :   
+**2.5. Sự tối ưu, so sánh và mở rộng :**   
 
-- Thuật toán tuy đã giải quyết được tình huống dãy số đầu vào đã được sắp xếp tăng dần ( tức nó chỉ mất O(n) thời gian sắp xếp). Nhưng còn với trường hợp dãy số đầu vào lại được sắp xếp theo thứ tự giảm dần, trong tình huống này giải thuật vẫn sẽ mất thời gian O(n^2) (thậm chí đây được xếp vào tình huống đầu vào tồi nhất). Để tối ưu giải thuật, xin đề xuất một giải pháp sử dụng biến hasSwapped (như giải pháp tối ưu trong Selection Sort) để phát hiện dãy đầu vào đã được sắp xếp giảm dần, từ đó chỉ cần mất O(n/2) thời gian để đảo ngược dãy số đầu vào đó.
-- Một giải pháp tối ưu khá hay được đề xuất tiếp theo đó là : Thay vì trong giai đoạn chèn 1 quân bài vào dãy các quân bài phía trước nó bằng giải pháp tìm kiếm tuần tự, ta sẽ sử dụng giải thuật tìm kiếm nhị phân trong chính quá trình chèn đó. Điều này sẽ giúp tiết kiệm được thời gian tìm kiếm và chèn đi khá đáng kể, từ O(i) xuống còn O(log(i)) với i là chỉ số cần chèn tại đó
-- Điều gì sẽ xảy ra nếu giải thuật này được cài bằng danh sách liên kết : Liệu nó sẽ bất lợi hay có lợi? Có nhiều bài toán bắt buộc phải sử dụng việc cài đặt giải thuật Selection Sort bằng cấu trúc dữ liệu Danh sách Liên kết
-+ Trong tình huống này, việc sử dụng danh sách liên kết để cài đặt chỉ có lợi khi mà dữ liệu cần sắp xếp đến một cách liên tục (đó có thể là dữ liệu online). Vì vậy, với cách cài đặt Danh sách Liên kết, ta có thể chủ động cấp phát vùng nhớ tùy thích
-+ Nhưng khi cài đặt bằng Danh sách liên kết cũng sẽ nảy sinh vài vấn đề : Do việc truy cập vào 1 phần tử trong danh sách liên kết không mang tính trực truy tức phải mất thời gian tuyến tính. Điều này, có thể làm giảm hiệu suất của giải thuật  
+- Thuật toán tuy đã giải quyết được tình huống dãy số đầu vào đã được sắp xếp tăng dần ( tức nó chỉ mất O(n) thời gian sắp xếp). Nhưng còn với trường hợp dãy số đầu vào lại được sắp xếp theo thứ tự giảm dần, trong tình huống này giải thuật vẫn sẽ mất thời gian O(n^2) (thậm chí đây được xếp vào tình huống đầu vào tồi nhất). Để tối ưu giải thuật, xin đề xuất một giải pháp với cách sử dụng biến hasSwapped (như giải pháp tối ưu trong Selection Sort) để phát hiện dãy đầu vào đã được sắp xếp giảm dần mất O(n) thời gian,sau đó tốn thêm O(n/2) thời gian để đảo ngược dãy số đầu vào đó.
+- Một giải pháp tối ưu khá hay được đề xuất tiếp theo đó là : Thay vì trong giai đoạn chèn 1 quân bài vào dãy các quân bài phía trước nó bằng giải pháp tìm kiếm tuần tự, ta sẽ sử dụng giải thuật tìm kiếm nhị phân trong chính quá trình chèn đó. Điều này sẽ giúp tiết kiệm được thời gian cho thao tác tìm kiếm và thao tác chèn một cách đáng kể từ O(i) xuống còn O(log(i)) với i là chỉ số cần chèn tại đó
+- Điều gì sẽ xảy ra nếu giải thuật này được cài bằng danh sách liên kết : Liệu nó sẽ bất lợi hay có lợi? 
+  + Trong tình huống này, việc sử dụng danh sách liên kết để cài đặt chỉ có lợi khi mà dữ liệu cần sắp xếp đến một cách liên tục (đó có thể là dữ liệu online). Vì vậy, với cách cài đặt Danh sách Liên kết, ta có thể chủ động cấp phát vùng nhớ tùy thích
+  + Nhưng khi cài đặt bằng Danh sách liên kết cũng sẽ nảy sinh vài vấn đề : Do việc truy cập vào 1 phần tử trong danh sách liên kết không mang tính trực truy tức phải mất thời gian tuyến tính. Điều này, có thể làm giảm hiệu suất của giải thuật  
 
 Tuy nhiên, trong thực tế để cài đặt Danh sách Liên kết cho giải thuật này, mọi người có thể tham khảo tại đây : 
 http://www.geeksforgeeks.org/insertion-sort-for-singly-linked-list/
 
-3.Thuật toán Bubble Sort (Sắp xếp nổi bọt)  
+**3.Thuật toán Bubble Sort (Sắp xếp nổi bọt)** 
 
-3.1. Mã nguồn minh họa : 
+**3.1. Mã nguồn minh họa :** 
 
 ```C++
 // algorithm for Selection Sort
@@ -152,29 +153,30 @@ void bubbleSort(double *unsortedArray, int size) {
 
 ```
 
-3.2. Ý tưởng của giải thuật : 
+**3.2. Ý tưởng của giải thuật :**
 
-Thuật toán này mang một tư tưởng lan truyền, có nghĩa là : với mỗi một quá trình lan truyền (tức một lần duyệt mảng, và quá trình hoán vị liên tiếp hai tử gần kề nếu cần thiết), sau mỗi quá trình “đưa đẩy” và “lan truyền” đó, giải thuật sẽ tìm ra một phần từ lớn nhất rồi cố định nó ở cuối mảng. Lúc này, phần tử ở cuối mảng sẽ không còn đóng bất kỳ một vai trò nào nữa trong quá trình sắp xếp. Khi đó, để dễ hiểu chúng ta có thể giả định, mảng mới chỉ còn lại từ phần từ đầu tiên đến phần từ thứ n – 1 ( không xét phần tử cuối), rồi lại tiến hành quá trình “lan truyền nổi bọt” trong mảng mới này để tiếp tục tìm ra một phần tử lớn nhất và gắn cố định tại trí cuối cùng,,, Cứ như vậy, sau mỗi quá trình lan truyền làm số phần tử trong mảng giảm đi một, và ta lại cố định (hay tìm ra) được một phần tử lớn nhất nằm ở cuối mỗi mảng. Sau n – 1 quá trình lan truyền đó, ta sẽ thu được một mảng đã được sắp xếp và quá trình lan truyền hoàn toàn kết thúc
+Thuật toán này mang một tư tưởng lan truyền, có nghĩa là : với mỗi một quá trình lan truyền (quá trình duyệt và hoán vị các phần tử gần kề liên tiếp), giải thuật sẽ xác định được một phần từ lớn nhất rồi cố định nó ở cuối mảng. Lúc này, phần tử ở cuối mảng sẽ không còn đóng bất kỳ một vai trò nào nữa trong quá trình sắp xếp tiếp theo. Khi đó, để dễ hiểu ta có thể giả định, mảng mới chỉ còn lại từ phần từ đầu tiên đến phần từ thứ n – 1 ( không xét phần tử cuối). Sau đó tiếp tục quá trình “lan truyền nổi bọt” trong mảng mới này để liên tục tìm ra phần tử lớn nhất và gắn nó cố định tại trí cuối cùng,,, Như vậy, sau mỗi quá trình lan truyền, số phần tử trong mảng liên tục giảm đi một, nhưng đồng thời ta cũng đã cố định được một phần tử lớn nhất nằm ở cuối mỗi mảng. Sau n – 1 quá trình lan truyền như vậy, chúng ta sẽ thu được một mảng đã được sắp xếp và quá trình lan truyền hoàn toàn kết thúc
 
-3.3. Độ phức tạp của giải thuật : 
+**3.3. Độ phức tạp của giải thuật :** 
 
-Do phải trải qua (n-1) quá trình lan truyền, với mỗi quá trình lan truyền sẽ tương ứng với số lần duyệt tối đa qua các phần từ là : (n-1) + (n-2) + … + 1. Vì vậy độ phức tạp của giải thuật trên là : O(n^2)
+Do phải trải qua (n-1) quá trình lan truyền, với mỗi quá trình lan truyền sẽ tương ứng với số lần duyệt tối đa qua các phần từ là : `(n-1) + (n-2) + … + 1`. Vì vậy độ phức tạp của giải thuật trên là : `O(n^2)`
 
-3.4. Nhận xét và đánh giá : 
+**3.4. Nhận xét và đánh giá :** 
 
-3.4.1 Ưu điểm: 
+**3.4.1 Ưu điểm:** 
 
 + Thể hiện được tính ổn định và tại chỗ
 + Đơn giản, dễ hiểu… được sử dụng làm ví dụ minh họa trong quá trình giảng dạy
-3.4.2  Nhược điểm :
 
-- Nhược điểm lớn nhất của giải thuật sắp xếp nổi bọt đó là số lần hoán vị quá nhiều so với các giải thuật đã trình bày phía trên. Trong thực tế, giải thuật này hiếm khi được ứng dụng trong các bài toán thực nghiệm. Có nhiều ý kiến cho rằng không nên giảng dạy thuật toán này trong môi trường đại học!
+**3.4.2  Nhược điểm :**
 
-3.5. Tối ưu và so sánh :
+- Nhược điểm lớn nhất của giải thuật sắp xếp nổi bọt đó là số lần hoán vị quá nhiều so với các giải thuật đã trình bày phía trên. Trong thực tế, giải thuật này hiếm khi được ứng dụng trong các bài toán thực nghiệm (do tốn kém khá nhiều thao tác hoán vị)
 
-- Giải pháp tối ưu cho giải thuật trên đó là sử dụng biến hasSwapped nằm bên ngay trong vòng lặp thứ 2. Nếu đầu vào là đã được sắp xếp thì độ phức thời gian chỉ là O(n). Một cách tương tự, trong trường hợp dãy số đầu được sắp xếp giảm dần
+**3.5. Tối ưu và so sánh :**
 
-4.	Thuật toán Merge Sort (Sắp xếp trộn)
+- Giải pháp tối ưu cho giải thuật trên đó là sử dụng biến hasSwapped nằm bên ngay trong vòng lặp thứ 2. Nếu đầu vào là đã được sắp xếp thì độ phức tạp thời gian chỉ còn là O(n). Một cách tương tự, trong trường hợp dãy số đầu được sắp xếp giảm dần
+
+**4.Thuật toán Merge Sort (Sắp xếp trộn)**
 
 4.1. Mã nguồn minh họa (python)
 
