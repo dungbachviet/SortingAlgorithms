@@ -8,13 +8,13 @@ Với mỗi giải thuật, tớ sẽ cố gắng trình bày và làm rõ chún
 + Mã nguồn ( được minh họa trên một vài ngôn ngữ lập trình)
 + Độ phức tạp của thuật toán
 + Đưa ra nhận xét và đánh giá thuật toán.
-+ So sánh với các giải thuật khác và Đưa ra giải pháp tối ưu cùng khả năng ứng của bài toán trong thực tế cuộc sống.
++ So sánh với các giải thuật khác và Đưa ra giải pháp tối ưu cùng khả năng ứng dụng của bài toán trong thực tế cuộc sống.
 
-Mình rất mong chờ sẽ nhận được thật nhiều những ý kiến đóng góp từ mọi người để bài viết này ngày càng hoàn thiện hóa, cũng như trở thành một nguồn tài liệu có khả năng tham khảo cao và ngày một lan tỏa rộng rãi trong cộng đồng !  
+Mình rất mong chờ sẽ nhận được thật nhiều những ý kiến đóng góp từ mọi người để bài viết này ngày càng hoàn thiện hơn và trở thành một nguồn tài liệu hữu ích, có khả năng tham khảo cao cho cộng đồng !  
 
-Còn bây giờ, chúng ta sẽ bắt đầu với giải thuật cơ bản đầu tiên nhé ! 
+Còn bây giờ, chúng ta sẽ bắt đầu với giải thuật cơ bản đầu tiên nhé! 
 
-**1.	Thuật toán Selection Sort (Sắp xếp chọn)**
+## **1.	Thuật toán Selection Sort (Sắp xếp chọn)**
 
 1.1	Code minh họa 
 
