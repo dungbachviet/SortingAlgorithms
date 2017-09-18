@@ -1,6 +1,7 @@
 # 12 THUẬT TOÁN SẮP XẾP CƠ BẢN
 
-Xin chào mọi người,  
+### *Xin chào mọi người,* 
+
 Trong bài viết đầu tay này, mình xin trình bày về 12 giải thuật phổ biến và cơ bản trong lớp bài toán sắp xếp các chuỗi số, chuỗi ký tự. Ý tưởng của bài viết được khảo cứu và trích dẫn chủ yếu từ một số nguồn tài liệu hữu ích như : Geeksforgeeks.org, tutorialspoint.com, stackoverflow.com…  
 
 Với mỗi giải thuật, tớ sẽ cố gắng trình bày và làm rõ chúng theo bố cục với những nội chính sau : 
