@@ -11,7 +11,7 @@ Với mỗi giải thuật, tớ sẽ cố gắng trình bày và làm rõ chún
 + Đưa ra nhận xét và đánh giá thuật toán.
 + So sánh với các giải thuật khác và Đưa ra giải pháp tối ưu cùng khả năng ứng dụng của bài toán trong thực tế cuộc sống.
 
-Một điều nữa là mình rất mong chờ nhận được thật nhiều ý kiến đóng góp và phản hổi từ mọi người để bài viết này ngày càng hoàn thiện và có sức lan tỏa mạnh mẽ !
+Một điều nữa là mình rất mong chờ để nhận được nhiều ý kiến đóng góp và phản hồi từ mọi người để bài viết này ngày càng trở nên hoàn thiện và có sức lan tỏa mạnh mẽ hơn !
 
 ## **1.	Thuật toán Selection Sort (Sắp xếp chọn)**
 
