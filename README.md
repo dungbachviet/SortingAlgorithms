@@ -65,7 +65,7 @@ Như vậy, đối với 1 dãy số gồm n phần tử , số lần duyệt qu
 
 - Trong tình huống dãy số đầu vào đã được sắp xếp, giải pháp được đưa ra sẽ là : Sử dụng một biến hasSwapped để duyệt từ đầu tới cuối mảng, để phát hiện xem dãy số đã được sắp xếp tăng dần hay giảm dần hay chưa? Nếu hasSwapped = 0 khi duyệt theo chiều thuận tức dãy đã được sắp xếp tăng dần. Nếu hasSwapped = 0 khi duyệt theo chiều nghịch, tức dãy đã được sắp xếp giảm dần, vì thế chỉ cần đảo ngược lại dãy số đó để có một thứ tự đúng!
 
-**2.Thuật toán Insertion Sort (Sắp xếp chèn)** 
+## **2.Thuật toán Insertion Sort (Sắp xếp chèn)** 
 
 **2.1. Mã nguồn minh họa :**  
 
