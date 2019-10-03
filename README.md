@@ -51,7 +51,7 @@ Như vậy, đối với 1 dãy số gồm n phần tử , số lần duyệt qu
 
 **1.4.1. Ưu điểm**  
 
-- Selection Sort là một giải thuật đã hạn chế được khá nhiều số lần lặp so với giải thuật Sắp xếp Nổi bọt (do nó sử dụng biến chỉ số để lưu lại phần tử nhỏ nhất,… để đến cuối cùng mới tiến hành hoán vị)
+- Selection Sort là một giải thuật đã hạn chế được khá nhiều số hoán vị (đổi chỗ 2 phần tử trong mảng) so với giải thuật Sắp xếp Nổi bọt (do nó sử dụng biến chỉ số để lưu lại phần tử nhỏ nhất,… để đến cuối cùng mới tiến hành hoán vị)
 - Giải thuật này có tính chất ổn định : Tức các phần tử các giá trị bằng nhau sẽ giữ nguyên vị trí tương đối của chúng như trước khi dãy số được sắp xếp
 - Không đòi hỏi thêm không gian nhớ phụ, nên giải thuật mang tính chất “ Tại chỗ”
 - Trong thực tế, giải thuật này có thể được sử dụng như một giải pháp hỗ trợ cho một giai đoạn nào đó trong những giải thuật sắp xếp khác
